@@ -1,21 +1,30 @@
-import requests
-import threading
-import itertools
+import requests, threading
 
-owo = open(input("Webhooks file: "), "r").read().splitlines()
+owo=open(input("Webhooks file: "), "r").read().splitlines()
+body=requests.get("https://sslproxies.org").text
+proxies:list=body[body.find("UTC.\n")+6:44116].splitlines()
+proxies.remove(proxies[-1])
+COUNT:int=0
+
+class Task(threading.Thread):
+    def run(f, a:tuple):
+        threading.Thread(target=f, args=a, daemon=True).start()
 
 def main(webhook, content):
-    proxyuwu={
-        "http": next(itertools.cycle(["https://95.0.206.53:8080", "https://133.242.237.138:3128", 
-                                    "https://20.81.62.32:3128", "https://150.136.139.34:3128"]))
-    }       #https://free-proxy-list.net/
-    r=requests.post(webhook, data={"content":content}, proxies=proxyuwu)
-    if not str(r.status_code).startswith(str(0x02)):
-        print("oh no", r.status_code)
-    else: print("uwu~")
+    global COUNT
+    proxyuwu={"https":"http://%s"%proxies[COUNT]}
+    try:
+        r = requests.post(webhook,data={"content":content},proxies=proxyuwu)
+        if r.ok:
+            print(f'"{content}" successfully sent.')
+        elif r.status_code==429:
+            if COUNT>=len(proxies)-1: COUNT=0
+            else: COUNT+=1
+    except: pass
+
 try:
     c = str(input("content: "))
-    while True: 
+    while True:
         for lel in owo:
-            threading.Thread(target=main(lel, c), args=()).start()
-except Exception as neg: print(neg)
+            Task.run(main,(lel,c))
+except Exception as neg: exit("SUS")
