@@ -76,7 +76,7 @@ async def flood(ctx):
 🤡😱💸💯🥵🔥🗿🥶🧢✅🙂☕😂😎💩❤️✝️😋
 😋✝️❤️💩😎😂☕🙂✅🧢🥶🗿🔥🥵💯💸😱🤡"""
         await ctx.send(f"""@everyone 
-{emojis*90}
+{emojis*11}
 https://tenor.com/view/meme-gif-24752206""")
 @mk.command()
 async def ducks(ctx):
