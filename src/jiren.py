@@ -1,6 +1,5 @@
-import discord
+import discord, random
 from discord.ext import commands
-import random
 
 print("""
 ░░░░░██╗██╗██████╗░███████╗███╗░░██╗  ░██████╗███████╗██╗░░░░░███████╗██████╗░░█████╗░████████╗
@@ -75,8 +74,9 @@ async def flood(ctx):
         emojis = """
 🤡😱💸💯🥵🔥🗿🥶🧢✅🙂☕😂😎💩❤️✝️😋
 😋✝️❤️💩😎😂☕🙂✅🧢🥶🗿🔥🥵💯💸😱🤡"""
-        await ctx.send(f"""@everyone 
-{emojis*11}
+        await ctx.send(f"""@everyone\n{emojis*11}
+https://tenor.com/view/drip-goku-roadman-goku-nike-tings-gif-19862707
+https://tenor.com/view/omori-gif-26202582
 https://tenor.com/view/meme-gif-24752206""")
 @mk.command()
 async def ducks(ctx):
