@@ -2,3 +2,4 @@ discord.py==1.7.0
 asyncio
 aiohttp
 requests
+zoomeye
