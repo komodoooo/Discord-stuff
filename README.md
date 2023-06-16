@@ -5,5 +5,6 @@ This repo contains all my discord "projects", like:
 3) [jiren.py](https://github.com/komodoooo/discord-stuff/blob/main/src/jiren.py), a common discord selfbot
 4) [idk.py](https://github.com/komodoooo/discord-stuff/blob/main/src/idk.py), get account information via access token (JWT/OAuth2)
 5) [sessus](https://replit.com/@Ciencias/Sessus#main.py), very basic discord chatbot
+6) [zw.py](https://github.com/komodoooo/discord-stuff/blob/main/src/zw.py), scrape discord webhooks from zoomeye
 # Dependencies
 `pip install -r requirements.txt`
