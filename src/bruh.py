@@ -1,9 +1,9 @@
-import requests, threading
+import requests, threading, re
 
 owo=open(input("Webhooks file: "), "r").read().splitlines()
 body=requests.get("https://sslproxies.org").text
 proxies:list=body[body.find("UTC.\n")+6:44116].splitlines()
-proxies.remove(proxies[-1])
+proxies = re.compile(r'\b(?:[0-9]{1,3}\.){3}[0-9]{1,3}\b:\d+').findall(body)
 COUNT:int=0
 
 class Task(threading.Thread):
@@ -14,7 +14,7 @@ def main(webhook, content):
     global COUNT
     proxyuwu={"https":"http://%s"%proxies[COUNT]}
     try:
-        r = requests.post(webhook,data={"content":content},proxies=proxyuwu)
+        r = requests.post(webhook,data={"content":content})#,proxies=proxyuwu)
         if r.ok:
             print(f'"{content}" successfully sent.')
         elif r.status_code==429:
