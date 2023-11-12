@@ -12,9 +12,9 @@ class Task(threading.Thread):
 
 def main(webhook, content):
     global COUNT
-    proxyuwu={"https":"http://%s"%proxies[COUNT]}
+    proxyuwu={"http":"http://%s"%proxies[COUNT]}
     try:
-        r = requests.post(webhook,data={"content":content})#,proxies=proxyuwu)
+        r = requests.post(webhook,data={"content":content},proxies=proxyuwu)
         if r.ok:
             print(f'"{content}" successfully sent.')
         elif r.status_code==429:
